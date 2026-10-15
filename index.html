@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador Automático de Miniaturas</title>
+    <link rel="stylesheet" href="estilo.css">
+    <!-- Fuente Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Generador de Miniaturas</h1>
+            <p>Sube una imagen para ver el proceso automático con Supabase.</p>
+        </header>
+
+        <main class="card">
+            <!-- Zona de Carga -->
+            <div class="upload-zone" id="dropZone" onclick="document.getElementById('fileInput').click()">
+                <input type="file" id="fileInput" accept="image/*" hidden>
+                <div class="upload-content">
+                    <svg width="48" height="48" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+                    <p>Haz clic para seleccionar una imagen o arrástrala aquí</p>
+                    <span class="file-info">PNG, JPG, WEBP (Máx. 5MB)</span>
+                </div>
+            </div>
+
+            <!-- Indicador de carga -->
+            <div id="loadingIndicator" class="loading hidden">
+                <div class="spinner"></div>
+                <p>Subiendo y generando miniatura...</p>
+            </div>
+
+            <!-- Resultados -->
+            <div id="resultsContainer" class="results hidden">
+                <div class="result-box">
+                    <h3>Imagen Original</h3>
+                    <div class="image-wrapper">
+                        <img id="originalImg" src="" alt="Original">
+                    </div>
+                </div>
+                <div class="result-box highlight">
+                    <h3>Miniatura (Generada por la Función)</h3>
+                    <div class="image-wrapper">
+                        <img id="thumbnailImg" src="" alt="Miniatura">
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- SDK de Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="app.js"></script>
+</body>
+</html>
